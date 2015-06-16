@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <TextView 
+        android:id="@+id/main_textView"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/hello_world"/>
+
+    <EditText
+        android:id="@+id/main_editText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/main_textView"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Enter new greeting.."
+        android:textSize="10sp" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/main_displayHelloWorld_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_editText"
+        android:layout_toLeftOf="@+id/main_changeGreet_button"
+        android:text="Hello World!"
+        android:textSize="10sp" />
+
+    <Button
+        android:id="@+id/main_changeGreet_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/main_editText"
+        android:text="Change"
+        android:textSize="10sp" />
+
+    <Button
+        android:id="@+id/main_showDatePicker_button"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/main_displayHelloWorld_button"
+        android:text="Select Date" />
+
+</RelativeLayout>
