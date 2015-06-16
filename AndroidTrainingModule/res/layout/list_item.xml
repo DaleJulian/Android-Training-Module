@@ -7,12 +7,21 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp" >
 
+    <ImageView
+        android:id="@+id/contactThumbnail"
+        android:layout_width="74dp"
+        android:layout_height="53dp"
+        android:layout_alignRight="@+id/name"
+        android:layout_alignTop="@+id/name"
+        android:src="@drawable/dale" />
+
     <TextView
         android:id="@+id/name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
         android:paddingTop="6dip"
+        android:text="ADFASF"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -20,7 +29,10 @@
         android:id="@+id/email"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="2dip" />
+        android:layout_alignLeft="@+id/mobile"
+        android:layout_below="@+id/mobile"
+        android:paddingBottom="2dip"
+        android:text="ADFASF" />
 
     <TextView
         android:id="@+id/mobile"
@@ -29,11 +41,5 @@
         android:gravity="left"
         android:text="@string/mobile"
         android:textStyle="bold" />
-    
-    <ImageView
-        android:id="@+id/contactThumbnail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
 
 </LinearLayout>

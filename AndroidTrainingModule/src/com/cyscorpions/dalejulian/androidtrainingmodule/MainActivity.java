@@ -1,6 +1,8 @@
 package com.cyscorpions.dalejulian.androidtrainingmodule;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -43,6 +45,8 @@ public class MainActivity extends ListActivity {
 	private static final String TAG_MOBILE = "mobile";
 	private static final String TAG_IMG_LINK = "imglink";
 
+	private ImageView mImageView;
+
 	// contacts JSONArray
 	JSONArray contacts = null;
 
@@ -65,14 +69,17 @@ public class MainActivity extends ListActivity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// getting values from selected ListItem
-				String name = ((TextView) view.findViewById(R.id.name))
-						.getText().toString();
-				String cost = ((TextView) view.findViewById(R.id.email))
-						.getText().toString();
-				String description = ((TextView) view.findViewById(R.id.mobile))
-						.getText().toString();
+//				String name = ((TextView) view.findViewById(R.id.name))
+//						.getText().toString();
+//				String cost = ((TextView) view.findViewById(R.id.email))
+//						.getText().toString();
+//				String description = ((TextView) view.findViewById(R.id.mobile))
+//						.getText().toString();
 			}
 		});
+		
+		//mImageView = (ImageView)findViewById(R.id.contactThumbnail);
+		//mImageView.setImageBitmap(getBitmapFromURL("http://4.bp.blogspot.com/-JOqxgp-ZWe0/U3BtyEQlEiI/AAAAAAAAOfg/Doq6Q2MwIKA/s1600/google-logo-874x288.png"));
 
 		// Calling async task to get json
 		new GetContacts().execute();
@@ -131,7 +138,12 @@ public class MainActivity extends ListActivity {
 						contact.put(TAG_EMAIL, email);
 						contact.put(TAG_MOBILE, mobile);
 						contact.put(TAG_IMG_LINK, imglink);
-						
+
+						//mImageView = (ImageView) findViewById(R.id.contactThumbnail);
+						//mImageView
+								//.setImageBitmap(getBitmapFromURL("http://4.bp.blogspot.com/-JOqxgp-ZWe0/U3BtyEQlEiI/AAAAAAAAOfg/Doq6Q2MwIKA/s1600/google-logo-874x288.png"));
+						//mImageView.setImageBitmap(bm);(getResources(), R.drawable.dale);
+						//mImageView.setImageURI("http://4.bp.blogspot.com/-JOqxgp-ZWe0/U3BtyEQlEiI/AAAAAAAAOfg/Doq6Q2MwIKA/s1600/google-logo-874x288.png");
 						// adding contact to contact list
 						contactList.add(contact);
 					}
@@ -158,12 +170,29 @@ public class MainActivity extends ListActivity {
 					contactList, R.layout.list_item, new String[] { TAG_NAME,
 							TAG_EMAIL, TAG_MOBILE }, new int[] { R.id.name,
 							R.id.email, R.id.mobile });
-			
-			
 
 			setListAdapter(adapter);
 		}
 
 	}
+
+//	public void loadBitmap(View view) {
+//		Bitmap b = getBitmapFromURL("http://upload.wikimedia.org/wikipedia/en/7/70/Example.png");
+//	}
+//
+//	public static Bitmap getBitmapFromURL(String src) {
+//	    try {
+//	        URL url = new URL(src);
+//	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//	        connection.setDoInput(true);
+//	        connection.connect();
+//	        InputStream input = connection.getInputStream();
+//	        Bitmap myBitmap = BitmapFactory.decodeStream(input);
+//	        return myBitmap;
+//	    } catch (IOException e) {
+//	        e.printStackTrace();
+//	        return null;
+//	    }
+//	}
 
 }
