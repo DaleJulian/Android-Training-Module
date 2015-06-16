@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/context_backToMainActivity_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/context_textViewSize"
+        android:layout_centerHorizontal="true"
+        android:text="Back to main activity"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/context_textColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/context_header_textView"
+        android:layout_marginRight="16dp"
+        android:text="Text color"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/context_textViewSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/context_textColor"
+        android:layout_alignBottom="@+id/context_textColor"
+        android:layout_alignParentLeft="true"
+        android:text="Text size"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/context_header_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/context_textColor"
+        android:text="..."
+        android:textSize="30sp" />
+
+</RelativeLayout>

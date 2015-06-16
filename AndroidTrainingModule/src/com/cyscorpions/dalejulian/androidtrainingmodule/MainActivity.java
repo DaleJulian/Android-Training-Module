@@ -1,35 +1,63 @@
 package com.cyscorpions.dalejulian.androidtrainingmodule;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-
 public class MainActivity extends Activity {
 
-	
 	private CheckBox mCheckBox;
 	private TextView mTextView;
-	
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        
-        mCheckBox = (CheckBox)findViewById(R.id.main_checkbox);
-        mTextView = (TextView)findViewById(R.id.main_textView);
-    }
+	private Button mNextActivityButton;
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu){
-    	menu.setGroupVisible(1, mCheckBox.isChecked());
-    	return super.onPrepareOptionsMenu(menu);
-    }
-    
-    @Override
+	private static final int RESULT_CODE = 1;
+	public static final String MAIN_ACTIVITY_EXTRA = "com.cyscorpions.dalejulian.androidtrainingmodule.MainActivity.EXTRA";
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		mCheckBox = (CheckBox) findViewById(R.id.main_checkbox);
+		mTextView = (TextView) findViewById(R.id.main_textView);
+		mNextActivityButton = (Button) findViewById(R.id.main_nextActivity_button);
+		mNextActivityButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, NewActivity.class);
+				intent.putExtra(MAIN_ACTIVITY_EXTRA, "Hello, world!");
+				startActivityForResult(intent, 1);
+
+			}
+		});
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == 1) {
+			if (resultCode == RESULT_OK) {
+				String result = data
+						.getStringExtra(NewActivity.NEW_ACTIVITY_EXTRA);
+				mTextView.setText(result);
+			}
+
+		}
+	}
+
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		menu.setGroupVisible(1, mCheckBox.isChecked());
+		return super.onPrepareOptionsMenu(menu);
+	}
+
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		menu.add(0, 1, 0, "add");
@@ -43,7 +71,7 @@ public class MainActivity extends Activity {
 
 	}
 
-    @Override
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		StringBuilder sb = new StringBuilder();
 

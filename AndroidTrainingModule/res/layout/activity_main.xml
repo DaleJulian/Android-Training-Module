@@ -21,4 +21,13 @@
         android:text="@string/hello_world"
         android:textSize="50dp" />
 
+    <Button
+        android:id="@+id/main_nextActivity_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="Go to next activity" />
+
 </RelativeLayout>
