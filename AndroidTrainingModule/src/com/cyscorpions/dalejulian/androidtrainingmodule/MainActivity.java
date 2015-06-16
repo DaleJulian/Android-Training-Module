@@ -3,6 +3,7 @@ package com.cyscorpions.dalejulian.androidtrainingmodule;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,8 +18,10 @@ public class MainActivity extends Activity {
 	private Button mNextActivityButton;
 
 	private static final int RESULT_CODE = 1;
+	private static final String TAG = "MainActivity";
 	public static final String MAIN_ACTIVITY_EXTRA = "com.cyscorpions.dalejulian.androidtrainingmodule.MainActivity.EXTRA";
-
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -83,5 +86,35 @@ public class MainActivity extends Activity {
 		sb.append("\r\n title: " + item.getTitle());
 		mTextView.setText(sb.toString());
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		Log.d(TAG, "MainActivity: onStart()");
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		Log.d(TAG, "MainActivity: onResume()");
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		Log.d(TAG, "MainActivity: onPause()");
+	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+		Log.d(TAG, "MainActivity: onStop()");
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		Log.d(TAG, "MainActivity: onDestroy()");
 	}
 }
