@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/txtGreeting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/hello_world"
+        android:textSize="@dimen/title_text_size" />
+
+    <EditText
+        android:id="@+id/txtGetGreeting"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/textfield_height"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/txtGreeting"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/new_greeting"
+        android:textSize="@dimen/button_small_text_size" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btnChangeGreeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/txtGetGreeting"
+        android:text="@string/change"
+        android:textSize="@dimen/button_small_text_size" />
+
+    <Button
+        android:id="@+id/btnDisplayHelloWorld"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtGetGreeting"
+        android:layout_toLeftOf="@id/btnChangeGreeting"
+        android:text="@string/hello_world"
+        android:textSize="@dimen/button_small_text_size" />
+
+    <Button
+        android:id="@+id/btnSelectDate"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_medium_text_size"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/btnDisplayHelloWorld"
+        android:text="@string/select_date" />
+
+</RelativeLayout>
