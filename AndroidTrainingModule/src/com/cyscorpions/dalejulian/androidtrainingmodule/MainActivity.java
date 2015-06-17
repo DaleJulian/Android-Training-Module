@@ -10,19 +10,21 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends FragmentActivity implements ReceiveDateDialogListener {
+public class MainActivity extends FragmentActivity implements
+		ReceiveDateDialogListener {
 
 	private Date mDate = new Date();
-	private TextView mTextView;
+	private TextView mHeaderTextView;
 	private Button mChangeButton;
 	private Button mHelloWorldButton;
 	private Button mShowDatePickerButton;
-	private EditText mEditText;
+	private EditText mCustomGreetingEditText;
 
 	private static final String DIALOG_DATE = "date";
 
@@ -31,61 +33,45 @@ public class MainActivity extends FragmentActivity implements ReceiveDateDialogL
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.relative_layout_activity);
 
-		mTextView = (TextView) findViewById(R.id.main_textView);
-		mChangeButton = (Button) findViewById(R.id.main_changeGreet_button);
-		mEditText = (EditText) findViewById(R.id.main_editText);
-		mHelloWorldButton = (Button) findViewById(R.id.main_displayHelloWorld_button);
-		mShowDatePickerButton = (Button) findViewById(R.id.main_showDatePicker_button);
+		mHeaderTextView = (TextView) findViewById(R.id.txtGreeting);
+		mChangeButton = (Button) findViewById(R.id.btnChangeGreeting);
+		mCustomGreetingEditText = (EditText) findViewById(R.id.txtGetGreeting);
+		mHelloWorldButton = (Button) findViewById(R.id.btnDisplayHelloWorld);
+		mShowDatePickerButton = (Button) findViewById(R.id.btnSelectDate);
 
-		mChangeButton.setOnClickListener(new View.OnClickListener() {
+		AddListeners();
 
-			@Override
-			public void onClick(View v) {
-				mTextView.setText(mEditText.getText().toString());
+	}
 
-			}
-		});
+	private void AddListeners() {
 
-		mHelloWorldButton.setOnClickListener(new View.OnClickListener() {
+		mChangeButton.setOnClickListener(clickListener);
+		mHelloWorldButton.setOnClickListener(clickListener);
+		mShowDatePickerButton.setOnClickListener(clickListener);
+	}
 
-			@Override
-			public void onClick(View v) {
-				mTextView.setText("Hello, world!");
+	private OnClickListener clickListener = new OnClickListener() {
 
-			}
-		});
-
-		mShowDatePickerButton.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
+		@Override
+		public void onClick(View v) {
+			switch (v.getId()) {
+			case R.id.btnChangeGreeting:
+				mHeaderTextView.setText(mCustomGreetingEditText.getText()
+						.toString());
+				break;
+			case R.id.btnDisplayHelloWorld:
+				mHeaderTextView.setText(R.string.hello_world);
+				break;
+			case R.id.btnSelectDate:
 				FragmentManager fm = getSupportFragmentManager();
-				DatePickerFragment dialog = new DatePickerFragment().newInstance(mDate);
+				DatePickerFragment dialog = new DatePickerFragment()
+						.newInstance(mDate);
 				dialog.show(fm, DIALOG_DATE);
+				break;
 
 			}
-		});
-
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
 		}
-		return super.onOptionsItemSelected(item);
-	}
+	};
 
 	@Override
 	public void onFinishEditDialog(Date date) {
