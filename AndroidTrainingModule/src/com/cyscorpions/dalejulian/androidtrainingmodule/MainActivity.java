@@ -39,11 +39,11 @@ public class MainActivity extends FragmentActivity implements
 		mHelloWorldButton = (Button) findViewById(R.id.btnDisplayHelloWorld);
 		mShowDatePickerButton = (Button) findViewById(R.id.btnSelectDate);
 
-		AddListeners();
+		addListeners();
 
 	}
 
-	private void AddListeners() {
+	private void addListeners() {
 
 		mChangeButton.setOnClickListener(clickListener);
 		mHelloWorldButton.setOnClickListener(clickListener);
